@@ -151,12 +151,10 @@ app.post("/delete", async (req, resp) => {
                 await deleteItem(Task, deleteId);
                 console.log("Item deleted successfully.");
                 resp.redirect("back");
-            } else {
-                const errorMessage = "Task is not checked. Cannot delete.";
-                resp.write(`<script>alert("${errorMessage}");</script>`);
-                resp.redirect("back");
-            }
+            } 
+            
         } 
+                resp.redirect("back");
     } catch (err) {
         console.error("Error:", err);
 
