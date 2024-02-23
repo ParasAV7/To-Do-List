@@ -6,7 +6,7 @@ const app = express();
 const _ = require('lodash')
 const mongoose = require("mongoose");
 
-const mongoAtlasUrl = "mongodb+srv://paras:paras@todolist.qhnnqkc.mongodb.net/?retryWrites=true&w=majority";
+const mongoAtlasUrl = "mongodb+srv://paras:paras@todolist.qhnnqkc.mongodb.net/toDoList?retryWrites=true&w=majority";
 mongoose.connect(mongoAtlasUrl);
 
 
@@ -19,6 +19,9 @@ const taskSchema = new mongoose.Schema({
     title:String,
     checked:Boolean
 });
+
+let topic = "";
+const defaultItems = ["Welcome to our To-Do List","Press + to Add more","Select and Press X to delete the task"];
 const Task = mongoose.model("Task",taskSchema);
 const addItem = async (taskName,titleName) =>{
     try{
@@ -69,9 +72,6 @@ const deleteDefault = async (model,name)=>{
     }
 }
 
-
-let topic = "";
-const defaultItems = ["Welcome to our To-Do List","Press + to Add more","Select and Press X to delete the task"];
 
 app.get("/", async function(request, respond){
     topic = 'Personal Note'
