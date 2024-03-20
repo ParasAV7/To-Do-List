@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs")
 const bodyParser = require("body-parser");
@@ -150,7 +151,7 @@ app.post("/delete", async (req, resp) => {
             if (task.checked) {
                 await deleteItem(Task, deleteId);
                 console.log("Item deleted successfully.");
-                resp.redirect("back");
+               
             } 
             
         } 
