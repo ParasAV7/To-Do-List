@@ -6,7 +6,7 @@ const app = express();
 const _ = require('lodash')
 const mongoose = require("mongoose");
 
-const mongoAtlasUrl = "mongodb+srv://paras:paras@todolist.qhnnqkc.mongodb.net/toDoList?retryWrites=true&w=majority";
+const mongoAtlasUrl = process.env.URL
 mongoose.connect(mongoAtlasUrl);
 
 
@@ -150,7 +150,7 @@ app.post("/delete", async (req, resp) => {
             if (task.checked) {
                 await deleteItem(Task, deleteId);
                 console.log("Item deleted successfully.");
-                resp.redirect("back");
+                
             } 
             
         } 
